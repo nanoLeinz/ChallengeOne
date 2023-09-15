@@ -7,12 +7,14 @@ Terimakasih sudah memesan di BinarFud
 Dibawah ini adalah pesanan anda
 
 Nasi Goreng		2	30.000
-Es TehManis		3	9.000
+Es TehManis		1	3.000
 Mie Goreng		3	39.000
-Es TehManis		99	297.000
 Nasi Goreng		2	30.000
+Nasi + Ayam		1	18.000
+Es Jeruk		4	20.000
+Mie Goreng		3	39.000
 ------------------------- +
-Total			109	405.000
+Total			16	179.000
 
 Pembayaran : BinarCash
 

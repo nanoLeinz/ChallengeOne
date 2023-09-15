@@ -76,7 +76,7 @@ public class Menu {
         System.out.print("Qty => ");
         qty = scanner.nextInt();
         if (qty == 0) showMenu();
-        orderList.add(new Orders(menuNumber, qty));
+        orderList.add(new Orders(menuNumber, qty,(Integer) menuList.namaMenu[menuNumber - 1][2]));
         showMenu();
     }
 
