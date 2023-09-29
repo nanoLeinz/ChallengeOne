@@ -1,7 +1,7 @@
-package Controller;
+package controller;
 
-import Model.Menus;
-import Model.Orders;
+import model.Menus;
+import model.Orders;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,7 +18,10 @@ public class Menu {
     ArrayList<Orders> orderList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     public final String struk = "Struk_Pembayaran.txt";
-    Integer pilihan, qty, totalQty, total;
+    Integer pilihan;
+    Integer qty;
+    Integer totalQty;
+    Integer total;
 
     public void showMenu() {
         System.out.println(
@@ -28,7 +31,7 @@ public class Menu {
                         + "\n\nSilahkah Pilih Menu Makanan : "
         );
 
-        for (Object[] list : menuList.namaMenu
+        for (Object[] list : menuList.getNamaMenu()
         ) {
             System.out.println(list[0] + ". " + list[1] + "\t| " + formatNumber((Integer) list[2]));
         }
@@ -71,7 +74,7 @@ public class Menu {
                         + "\n==========================="
 
         );
-        System.out.println(menuList.namaMenu[menuNumber - 1][1] + "\t\t| " + formatNumber((Integer) menuList.namaMenu[menuNumber - 1][2]));
+        System.out.println(menuList.getNamaMenu()[menuNumber - 1][1] + "\t\t| " + formatNumber((Integer) menuList.getNamaMenu()[menuNumber - 1][2]));
         System.out.println("(Input 0 untuk kembali)");
         System.out.print("Qty => ");
         qty = scanner.nextInt();
@@ -93,7 +96,7 @@ public class Menu {
             total += orders.getTotalPrice();
             totalQty += orders.getQty();
             System.out.println(
-                    menuList.namaMenu[orders.getOrderId() - 1][1]
+                    menuList.getNamaMenu()[orders.getOrderId() - 1][1]
                             + "\t\t"
                             + orders.getQty()
                             + "\t"
@@ -154,7 +157,7 @@ public class Menu {
             for (Orders orders : orderList) {
                 total += orders.getTotalPrice();
                 totalQty += orders.getQty();
-                writer.write(menuList.namaMenu[orders.getOrderId() - 1][1].toString());
+                writer.write(menuList.getNamaMenu()[orders.getOrderId() - 1][1].toString());
                 writer.write("\t\t");
                 writer.write(orders.getQty().toString());
                 writer.write("\t");
@@ -203,7 +206,6 @@ public class Menu {
     }
 
     public String formatNumber(Integer num) {
-        String formattedNumber = new DecimalFormat("###.000").format(num / 1000);
-        return formattedNumber;
+        return new DecimalFormat("###.000").format(num / 1000);
     }
 }

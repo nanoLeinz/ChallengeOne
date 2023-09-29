@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class Orders {
     private Integer orderId;
@@ -9,7 +9,7 @@ public class Orders {
         this.orderId = orderId;
         this.qty = qty;
         Menus menuList = new Menus();
-        this.totalPrice = qty * (Integer) menuList.namaMenu[orderId - 1][2];
+        this.totalPrice = qty * (Integer) menuList.getNamaMenu()[orderId - 1][2];
     }
 
     public Integer getOrderId() {
