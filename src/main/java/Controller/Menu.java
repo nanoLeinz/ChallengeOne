@@ -4,11 +4,13 @@ import model.Menus;
 import model.Orders;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
@@ -17,32 +19,33 @@ public class Menu {
     Menus menuList = new Menus();
     ArrayList<Orders> orderList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
-    public final String struk = "Struk_Pembayaran.txt";
     Integer pilihan;
     Integer qty;
     Integer totalQty;
     Integer total;
+    String input;
 
     public void showMenu() {
-        System.out.println(
-                "==========================="
-                        + "\nSelamat Datang di BinarFud"
-                        + "\n==========================="
-                        + "\n\nSilahkah Pilih Menu Makanan : "
-        );
+        Header.printHeader("Selamat Datang di BinarFud", "Silahkah Pilih Menu Makanan : ");
 
         for (Object[] list : menuList.getNamaMenu()
         ) {
             System.out.println(list[0] + ". " + list[1] + "\t| " + formatNumber((Integer) list[2]));
         }
         System.out.println(
-                "99. Pesan dan Bayar"
+                        "6. Hapus Pesanan"
+                        + "\n99. Pesan dan Bayar"
                         + "\n0. Keluar Aplikasi"
         );
-        System.out.print("=> ");
-        pilihan = scanner.nextInt();
-
-        route(pilihan);
+        try {
+            System.out.print("=> ");
+            pilihan = scanner.nextInt();
+            route(pilihan);
+        } catch (InputMismatchException e) {
+            scanner.next(); // Consume the invalid input
+            Header.printHeader("Input harus berupa angka!");
+            showMenu(); // Prompt the user again
+        }
     }
 
     public void route(Integer choice) {
@@ -54,6 +57,10 @@ public class Menu {
             case 5:
                 inputQuantity(choice);
                 break;
+            case 6:
+                deleteChoice();
+                showMenu();
+                break;
             case 99:
                 confirmAndPay();
                 break;
@@ -61,36 +68,67 @@ public class Menu {
                 System.out.println("Terima kasih Sudah Memesan");
                 return;
             default:
-                System.out.println("Silahkan Pilih Menu yang ada.");
+                Header.printHeader("Mohon masukkan input  pilihan anda");
+                System.out.println(
+                        "(y) untuk lanjut"
+                        + "\n(n) untuk keluar"
+                );
+                System.out.print("=> ");
+                input = scanner.next();
+                if (input.equals("y")) {
+                    showMenu();
+                } else if (input.equals("n")){
+                    exit(0);
+                }
                 showMenu();
                 break;
         }
     }
 
     public void inputQuantity(Integer menuNumber) {
-        System.out.println(
-                "==========================="
-                        + "\nBerapa Pesanan Anda"
-                        + "\n==========================="
-
-        );
+        Header.printHeader("Berapa Pesanan Anda");
         System.out.println(menuList.getNamaMenu()[menuNumber - 1][1] + "\t\t| " + formatNumber((Integer) menuList.getNamaMenu()[menuNumber - 1][2]));
         System.out.println("(Input 0 untuk kembali)");
         System.out.print("Qty => ");
-        qty = scanner.nextInt();
-        if (qty == 0) showMenu();
-        orderList.add(new Orders(menuNumber, qty));
-        showMenu();
+        try {
+            qty = scanner.nextInt();
+            if (qty == 0) {
+                Header.printHeader("Minimal 1 Jumlah Pesanan!");
+                inputQuantity(menuNumber);
+            }
+            orderList.add(new Orders(menuNumber, qty));
+            showMenu();
+        } catch (InputMismatchException e) {
+            scanner.next();
+            Header.printHeader("Input harus berupa angka!");
+            inputQuantity(menuNumber);
+        }
     }
+    public void deleteChoice() {
+        if (orderList.isEmpty()) {
+            System.out.println("Anda belum memesan apapun.");
+            return;
+        }
+        System.out.println("Pilih nomor pesanan yang ingin dihapus:");
+        for (int i = 0; i < orderList.size(); i++) {
+            Orders order = orderList.get(i);
+            System.out.println(i + 1 + ". " + menuList.getNamaMenu()[order.getOrderId() - 1][1]
+                    + "\t\t" + order.getQty() + "\t" + formatNumber(order.getTotalPrice()));
+        }
+        System.out.print("=> ");
+        int choice = scanner.nextInt();
 
+        if (choice >= 1 && choice <= orderList.size()) {
+            orderList.remove(choice - 1);
+            System.out.println("Pesanan berhasil dihapus.");
+        } else {
+            System.out.println("Nomor pesanan tidak valid.");
+        }
+    }
     public void confirmAndPay() {
         totalQty = 0;
         total = 0;
-        System.out.println(
-                "==========================="
-                        + "\nKonfirmasi & Pembayaran"
-                        + "\n==========================="
-        );
+        Header.printHeader("Konfirmasi & Pembayaran");
 
         for (Orders orders : orderList) {
             total += orders.getTotalPrice();
@@ -117,34 +155,37 @@ public class Menu {
                         + "\n2. Kembali ke Menu Utama"
                         + "\n0. Keluar Aplikasi"
         );
-        System.out.print("=> ");
-        pilihan = scanner.nextInt();
+        try {
+            System.out.print("=> ");
+            pilihan = scanner.nextInt();
 
-
-        if (pilihan == 0) {
-            System.out.println("Pemesanan Dibatalkan");
-            exit(1);
-        } else if (pilihan == 2) {
-            showMenu();
-        } else if (pilihan == 1) {
-            cetakStruk();
-
+            if (pilihan == 0) {
+                System.out.println("Pemesanan Dibatalkan");
+                exit(1);
+            } else if (pilihan == 2) {
+                showMenu();
+            } else if (pilihan == 1) {
+                cetakStruk();
+            }
+        } catch (InputMismatchException e) {
+            scanner.next(); // Consume the invalid input
+            Header.printHeader("Masukkan Menu yang tersedia");
+            confirmAndPay(); // Prompt the user again
         }
     }
 
     public void cetakStruk() {
-        if (!fileExists(struk)) {
-            createFile(struk);
-        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        String currentDate = dateFormat.format(new Date());
+        String struk = "Struk_Pembayaran_" + currentDate + ".txt";
         totalQty = 0;
         total = 0;
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(struk));
-            writer.write("===========================");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(struk))){
+            writer.write(Header.lines);
             writer.newLine();
             writer.write("BinarFud");
             writer.newLine();
-            writer.write("===========================");
+            writer.write(Header.lines);
             writer.newLine();
             writer.newLine();
             writer.write("Terimakasih sudah memesan di BinarFud");
@@ -177,31 +218,18 @@ public class Menu {
             writer.write("Pembayaran : BinarCash");
             writer.newLine();
             writer.newLine();
-            writer.write("===========================");
+            writer.write(Header.lines);
             writer.newLine();
             writer.write("Simpan struk ini sebagai bukti pembayaran");
             writer.newLine();
-            writer.write("===========================");
-            writer.close();
-            System.out.println("Struk Berhasil Dicetak");
-            exit(0);
+            writer.write(Header.lines);
+
         } catch (IOException e) {
             System.out.println("Gagal Mencetak Struk.");
             e.printStackTrace();
-        }
-    }
-
-    public boolean fileExists(String fileName) {
-        File file = new File(fileName);
-        return file.exists();
-    }
-
-    public static void createFile(String fileName) {
-        try {
-            File file = new File(fileName);
-            file.createNewFile();
-        } catch (IOException e) {
-            System.out.println("Terjadi kesalahan saat membuat Struk Pembayaran : " + e.getMessage());
+        } finally {
+            System.out.println("Struk Berhasil Dicetak");
+            exit(0);
         }
     }
 

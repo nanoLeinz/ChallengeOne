@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b803267d-e767-4257-9a72-5adc043b68d9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Menus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Orders.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/MainApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/CustomException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Header.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +25,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="ProjectId" id="2V1URVPSjSAl4jDomE4Bpkg6eA9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -60,7 +57,7 @@
 }</component>
   <component name="RunManager">
     <configuration name="BinarFud" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="View.MainApp" />
+      <option name="MAIN_CLASS_NAME" value="view.MainApp" />
       <module name="ChallengeOne" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -92,6 +89,7 @@
       <workItem from="1694709110143" duration="16362000" />
       <workItem from="1696000050557" duration="657000" />
       <workItem from="1696000728551" duration="2257000" />
+      <workItem from="1696037398521" duration="7400000" />
     </task>
     <servers />
   </component>
