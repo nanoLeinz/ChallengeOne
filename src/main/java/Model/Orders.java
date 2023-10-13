@@ -8,7 +8,6 @@ public class Orders {
     public Orders(Integer orderId, Integer qty, Integer price) {
         this.orderId = orderId;
         this.qty = qty;
-        Menus menuList = new Menus();
         this.totalPrice = qty * price;
     }
 

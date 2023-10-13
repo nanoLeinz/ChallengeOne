@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b803267d-e767-4257-9a72-5adc043b68d9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Struk_Pembayaran.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Struk_Pembayaran.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Menus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Menus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Orders.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +27,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -60,23 +63,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="BinarFud" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="View.MainApp" />
@@ -96,6 +99,10 @@
       <updated>1694003072288</updated>
       <workItem from="1694003073576" duration="324000" />
       <workItem from="1694709110143" duration="17736000" />
+      <workItem from="1694780392230" duration="2645000" />
+      <workItem from="1694786595982" duration="17000" />
+      <workItem from="1695039998650" duration="1223000" />
+      <workItem from="1695999682231" duration="376000" />
     </task>
     <servers />
   </component>

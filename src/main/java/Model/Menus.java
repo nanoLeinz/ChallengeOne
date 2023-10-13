@@ -8,6 +8,4 @@ public class Menus {
             {4, "Es TehManis", 3000},
             {5, "Es Jeruk", 5000}
     };
-
-
 }

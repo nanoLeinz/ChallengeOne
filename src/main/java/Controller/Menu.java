@@ -34,7 +34,7 @@ public class Menu {
         }
         System.out.println(
                 "99. Pesan dan Bayar"
-                        + "\n0. Keluar Aplikasi"
+                + "\n0. Keluar Aplikasi"
         );
         System.out.print("=> ");
         pilihan = scanner.nextInt();
